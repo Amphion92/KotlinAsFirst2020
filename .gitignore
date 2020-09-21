@@ -16,3 +16,4 @@ report/*
 *.ipr
 *.iws
 *.zip
+/.idea/codeStyles/
