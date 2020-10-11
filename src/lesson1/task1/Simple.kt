@@ -75,7 +75,7 @@ fun seconds(hours: Int, minutes: Int, seconds: Int) = hours * 3600 + minutes * 6
  * 1 сажень = 3 аршина = 48 вершков, 1 вершок = 4.445 см.
  */
 fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double =
-    ((sagenes * 48 + arshins * 16 + vershoks) * 4.445) / 100
+    (sagenes * 48 + arshins * 16 + vershoks) * 4.445 / 100
 
 /**
  * Тривиальная (1 балл)
@@ -83,7 +83,7 @@ fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double =
  * Пользователь задает угол в градусах, минутах и секундах (например, 36 градусов 14 минут 35 секунд).
  * Вывести значение того же угла в радианах (например, 0.63256).
  */
-fun angleInRadian(deg: Int, min: Int, sec: Int) = (deg * 3600 + min * 60 + sec) * PI / 648000
+fun angleInRadian(deg: Int, min: Int, sec: Int) = (deg * 3600 + min * 60 + sec) * PI / (3600 * 180) // Скобки (3600 * 180) поставил потому что без них не работает правильно
 
 /**
  * Тривиальная (1 балл)
@@ -129,8 +129,8 @@ fun accountInThreeYears(initial: Int, percent: Int) = initial * (1 + percent / 1
  * Необходимо вывести число, полученное из заданного перестановкой цифр в обратном порядке (например, 874).
  */
 fun numberRevert(number: Int): Int {
-    var revnum = ((number % 10) * 100)
-    revnum = number % 100 / 10 * 10 + revnum
-    revnum = number / 100 + revnum
+    var revnum = number % 10 * 100
+    revnum += number % 100 / 10 * 10
+    revnum += number / 100
     return revnum
 }
