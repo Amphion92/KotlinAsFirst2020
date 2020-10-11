@@ -78,7 +78,7 @@ fun digitNumber(n: Int): Int {
     if (n == 0) return 1
     else {
         while (c != 0) {
-            k ++
+            k++
             c /= 10
         }
         return k
@@ -98,14 +98,26 @@ fun fib(n: Int): Int = TODO()
  *
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
-fun minDivisor(n: Int): Int = TODO()
+fun minDivisor(n: Int): Int {
+    var i = 2
+    while (n % i != 0) {
+        i++
+    }
+    return i
+}
 
 /**
  * Простая (2 балла)
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int = TODO()
+fun maxDivisor(n: Int): Int {
+    var i = n - 1
+    while (n % i != 0) {
+        i--
+    }
+    return i
+}
 
 /**
  * Простая (2 балла)
@@ -123,7 +135,20 @@ fun maxDivisor(n: Int): Int = TODO()
  * Написать функцию, которая находит, сколько шагов требуется для
  * этого для какого-либо начального X > 0.
  */
-fun collatzSteps(x: Int): Int = TODO()
+fun collatzSteps(x: Int): Int {
+    var s = x
+    var k = 0
+    while (s != 1) {
+        if (s % 2 == 0) {
+            k++
+            s /= 2
+        } else {
+            k++
+            s = 3 * s + 1
+        }
+    }
+    return k
+}
 
 /**
  * Средняя (3 балла)
@@ -131,7 +156,15 @@ fun collatzSteps(x: Int): Int = TODO()
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int = TODO()
+fun lcm(m: Int, n: Int): Int {
+    var a = m
+    var b = n
+    while (a != b) {
+        if (a > b) a -= b
+        else b -= a
+    }
+    return m * (n / a)
+}
 
 /**
  * Средняя (3 балла)
@@ -158,7 +191,15 @@ fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int{
+    var m = 0
+    var x = n
+    while(x>0){
+        m = m*10 + x % 10
+        x /= 10
+    }
+    return m
+}
 
 /**
  * Средняя (3 балла)
