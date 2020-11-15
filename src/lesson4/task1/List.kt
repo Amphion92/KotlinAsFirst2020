@@ -127,7 +127,13 @@ fun abs(v: List<Double>): Double = TODO()
  *
  * Рассчитать среднее арифметическое элементов списка list. Вернуть 0.0, если список пуст
  */
-fun mean(list: List<Double>): Double = TODO()
+fun mean(list: List<Double>): Double {
+    if (list.count() == 0) {
+        return 0.0
+    } else {
+        return list.sum() / list.count()
+    }
+}
 
 /**
  * Средняя (3 балла)
@@ -186,8 +192,20 @@ fun factorize(n: Int): List<Int> = TODO()
  * Результат разложения вернуть в виде строки, например 75 -> 3*5*5
  * Множители в результирующей строке должны располагаться по возрастанию.
  */
-fun factorizeToString(n: Int): String = TODO()
-
+fun factorizeToString(n: Int): String {
+    var k = n
+    val numbers = mutableListOf<Int>()
+    var d = 2
+    while (d * d <= k) {
+        if (k % d == 0) {
+            numbers.add(d)
+            k /= d
+        } else d += 1
+    }
+    if (n > 1) numbers.add(k)
+    if (numbers.size == 2) return numbers[0].toString()
+    else return numbers.joinToString(separator = "*")
+}
 /**
  * Средняя (3 балла)
  *
@@ -241,7 +259,19 @@ fun decimalFromString(str: String, base: Int): Int = TODO()
  * 90 = XC, 100 = C, 400 = CD, 500 = D, 900 = CM, 1000 = M.
  * Например: 23 = XXIII, 44 = XLIV, 100 = C
  */
-fun roman(n: Int): String = TODO()
+fun roman(n: Int): String {
+    val ones = listOf<String>("", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX")
+    val tens = listOf<String>("", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC")
+    val hunds = listOf<String>("", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM")
+    val thous = listOf<String>("", "M", "MM", "MMM", "MMMM")
+
+    val t = thous[n / 1000]
+    val h = hunds[n / 100 % 10]
+    val te = tens[n / 10 % 10]
+    val o = ones[n % 10]
+
+    return t + h + te + o
+}
 
 /**
  * Очень сложная (7 баллов)
