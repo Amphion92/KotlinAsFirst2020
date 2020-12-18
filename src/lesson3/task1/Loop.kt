@@ -76,13 +76,11 @@ fun digitNumber(n: Int): Int {
     var k = 0
     var c = n
     if (n == 0) return 1
-    else {
-        while (c != 0) {
-            k++
-            c /= 10
-        }
-        return k
+    while (c != 0) {
+        k++
+        c /= 10
     }
+    return k
 }
 
 /**
@@ -140,12 +138,11 @@ fun collatzSteps(x: Int): Int {
     var k = 0
     while (s != 1) {
         if (s % 2 == 0) {
-            k++
             s /= 2
         } else {
-            k++
             s = 3 * s + 1
         }
+        k++
     }
     return k
 }
@@ -191,11 +188,11 @@ fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int{
+fun revert(n: Int): Int {
     var m = 0
     var x = n
-    while(x>0){
-        m = m*10 + x % 10
+    while (x > 0) {
+        m = m * 10 + x % 10
         x /= 10
     }
     return m
