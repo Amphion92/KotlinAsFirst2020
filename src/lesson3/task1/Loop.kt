@@ -97,11 +97,13 @@ fun fib(n: Int): Int = TODO()
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
 fun minDivisor(n: Int): Int {
-    var i = 2
-    while (n % i != 0) {
-        i++
+    val x = n.toDouble()
+    for (i in 2..sqrt(x).toInt() + 1) {
+        if (x.toInt() % i == 0) {
+            return i
+        }
     }
-    return i
+    return n
 }
 
 /**
@@ -110,12 +112,14 @@ fun minDivisor(n: Int): Int {
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
 fun maxDivisor(n: Int): Int {
-    var i = n - 1
-    while (n % i != 0) {
-        i--
+    for (i in 2..sqrt(n.toDouble()).toInt()) {
+        if (n % i == 0) {
+            return n / i
+        }
     }
-    return i
+    return 1
 }
+
 
 /**
  * Простая (2 балла)
